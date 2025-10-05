@@ -63,11 +63,3 @@ export const CONTRACT_ABI = [
     "type": "function"
   }
 ] as const;
-
-export const QUESTIONS = [
-  { id: 1, text: "What is the capital city of France?" },
-  { id: 2, text: "Which river is the longest in the world?" },
-  { id: 3, text: "What is the largest ocean on Earth?" },
-  { id: 4, text: "Which country has the most islands?" },
-  { id: 5, text: "What is the smallest country in the world?" }
-];
