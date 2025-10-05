@@ -2,7 +2,7 @@
 
 import { createAppKit } from '@reown/appkit/react'
 import { WagmiProvider } from 'wagmi'
-import { mainnet } from '@reown/appkit/networks'
+import { base } from '@reown/appkit/networks'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 import React from 'react'
@@ -16,7 +16,7 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/179229932']
 }
 
-const networks = [mainnet]
+const networks = [base]
 
 const wagmiAdapter = new WagmiAdapter({
   networks,
@@ -26,7 +26,7 @@ const wagmiAdapter = new WagmiAdapter({
 
 createAppKit({
   adapters: [wagmiAdapter],
-  networks: [mainnet],
+  networks: [base],
   projectId,
   metadata,
   features: {

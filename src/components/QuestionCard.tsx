@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Send, CheckCircle, Loader2 } from 'lucide-react'
-import { useSubmission } from '@/hooks/useContract'
+import { useSubmission } from '../hooks/useContract'
 
 interface QuestionCardProps {
   question: string

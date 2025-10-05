@@ -1,5 +1,5 @@
 import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
-import { CONTRACT_ADDRESS, CONTRACT_ABI } from '@/lib/contract'
+import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../lib/contract'
 
 export function useGeoQuestContract() {
   const { writeContract, data: hash, isPending } = useWriteContract()
