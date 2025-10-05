@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react'
 import { useAccount } from 'wagmi'
 import { Compass, History, Loader2 } from 'lucide-react'
-import QuestionCard from '@/components/QuestionCard'
-import OwnerPanel from '@/components/OwnerPanel'
-import Toast from '@/components/Toast'
-import ConnectWallet from '@/components/ConnectWallet'
-import { useGeoQuestContract, useContractData } from '@/hooks/useContract'
+import QuestionCard from '../components/QuestionCard'
+import OwnerPanel from '../components/OwnerPanel'
+import Toast from '../components/Toast'
+import ConnectWallet from '../components/ConnectWallet'
+import { useGeoQuestContract, useContractData } from '../hooks/useContract'
 
 interface Question {
   question: string
