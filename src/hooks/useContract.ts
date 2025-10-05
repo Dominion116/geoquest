@@ -1,30 +1,37 @@
-import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
+import { useReadContract, useWriteContract, useWaitForTransactionReceipt, useAccount } from 'wagmi'
 import { base } from 'wagmi/chains'
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../lib/contract'
 
 export function useGeoQuestContract() {
+  const { address } = useAccount()
   const { writeContract, data: hash, isPending } = useWriteContract()
   
   const { isLoading: isConfirming, isSuccess: isConfirmed } = 
     useWaitForTransactionReceipt({ hash })
 
   const submitAnswer = (questionId: number, answer: string) => {
+    if (!address) throw new Error('No wallet connected')
+    
     return writeContract({
       address: CONTRACT_ADDRESS,
       abi: CONTRACT_ABI,
       functionName: 'submitAnswer',
       args: [BigInt(questionId), answer],
       chain: base,
+      account: address,
     })
   }
 
   const updateCID = (newCID: string) => {
+    if (!address) throw new Error('No wallet connected')
+    
     return writeContract({
       address: CONTRACT_ADDRESS,
       abi: CONTRACT_ABI,
       functionName: 'setCID',
       args: [newCID],
       chain: base,
+      account: address,
     })
   }
 
