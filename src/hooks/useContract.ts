@@ -1,4 +1,5 @@
 import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
+import { base } from 'wagmi/chains'
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../lib/contract'
 
 export function useGeoQuestContract() {
@@ -13,6 +14,7 @@ export function useGeoQuestContract() {
       abi: CONTRACT_ABI,
       functionName: 'submitAnswer',
       args: [BigInt(questionId), answer],
+      chain: base,
     })
   }
 
@@ -22,6 +24,7 @@ export function useGeoQuestContract() {
       abi: CONTRACT_ABI,
       functionName: 'setCID',
       args: [newCID],
+      chain: base,
     })
   }
 
@@ -39,12 +42,14 @@ export function useContractData() {
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
     functionName: 'cid',
+    chainId: base.id,
   })
 
   const { data: owner } = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
     functionName: 'owner',
+    chainId: base.id,
   })
 
   return { cid, owner }
@@ -56,6 +61,7 @@ export function useSubmission(userAddress: string | undefined, questionId: numbe
     abi: CONTRACT_ABI,
     functionName: 'getSubmission',
     args: userAddress ? [userAddress as `0x${string}`, BigInt(questionId)] : undefined,
+    chainId: base.id,
   })
 
   return {
